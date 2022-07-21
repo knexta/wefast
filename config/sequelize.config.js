@@ -11,7 +11,10 @@ const sequelize = new Sequelize(
   }
 );
 
-const models = require("../models/todo.model")(sequelize, DataTypes);
+const models = require("../models/user_individuals.model")(
+  sequelize,
+  DataTypes
+);
 
 const db = { sequelize, Sequelize, models };
 
