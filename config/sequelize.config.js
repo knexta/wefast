@@ -11,11 +11,14 @@ const sequelize = new Sequelize(
   }
 );
 
-const models = require("../models/user_individuals.model")(
-  sequelize,
-  DataTypes
-);
+// const models = require("../models/user_individuals.model")(
+//   sequelize,
+//   DataTypes
+// );
 
-const db = { sequelize, Sequelize, models };
-
-module.exports = db;
+// const db = { sequelize, Sequelize, models };
+const db = {};
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.user = require("../models/user_individuals.model.js")(sequelize, DataTypes);
+db.module.exports = db;
