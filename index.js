@@ -1,11 +1,18 @@
 const express = require("express");
-const { sequelize } = require("./config/sequelize.config");
 const app = express();
-const PORT = 9000;
+const dotenv = require('dotenv');
+dotenv.config();
+const userRouter = require('./routes/userRoutes');
+const { sequelize } = require("./config/sequelize.config");
+
+const PORT = process.env.PORT;
 app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 
+
+
+app.use("/users",userRouter);
 sequelize.sync();
 app.listen(PORT, () => {
   console.log("server is running in PORT", PORT);
